@@ -33,5 +33,8 @@
 </script>
 
 <script type="text/x-red" data-help-name="wait-paths">
-    <p>Wait for incoming messages from diferent paths to generate a output message with the declared variables under msg.path merged. Each variable under msg.path should be initialized on a different input path</p>
+    <p>Wait for incoming messages from diferent paths to generate only an output message with the declared variables under msg.path merged. Each variable under msg.path should be initialized on a different input path</p>
+    <p>The defined variables must respect the form msq.paths["variable_name"] = value or expression </p>
+    <p>The variables are declared in field "paths" with a json string array. Ej: ["variable_name","variable_name2","path3","otherPath","etc"]. Warning! the json string is not validating yet.</p>
+
 </script>

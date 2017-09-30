@@ -1,0 +1,37 @@
+<script type="text/javascript">
+
+    
+
+    RED.nodes.registerType('wait-paths',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            paths: {value:'["path_1"]', required:true}//, validate: function(v) { if (JSON.parse(v)) return true } ;}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"wait-paths";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="wait-paths">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+
+        <label for="node-input-paths"><i class="icon-tag"></i> Paths</label>
+        <input type="text" id="node-input-paths" placeholder="Paths">
+    </div>
+    <div class="form-row node-input-rule-container-row">
+        <ol id="node-input-rule-container"></ol>
+        
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="wait-paths">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

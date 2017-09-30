@@ -7,7 +7,7 @@ the variables must be/are stored under msg.paths["variable_name"].
 When all variables are initialized with a value (through diferent arrived messages) then only one output message is sended, with all configured variables merged under msg.paths, and the temporary context.flow variables are deleted.
 The key to store varibles in context.flow includes the msg._msgid value, to prevent merge of flow instances for example between parallel http request-response execution flow instances.
 
-Initial properties interface must be improved. warning! No validation of json argument in properties.
+Initial properties interface must be improved. warning! Pending validation of json argument in properties.
 
 ## Example
 

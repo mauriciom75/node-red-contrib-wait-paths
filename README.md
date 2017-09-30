@@ -2,6 +2,7 @@
 
 ![Alt text](example.jpg?raw=true "Optional Title")
 
+Wait parallel branches to continue flow.
 This node wait for any value in all defined variables in the configuration array of variables. It uses the context.flow to store temporary values until all variables are inicialized with values.
 the variables must be/are stored under msg.paths["variable_name"].
 When all variables are initialized with a value (through diferent arrived messages) then only one output message is sended, with all configured variables merged under msg.paths, and the temporary context.flow variables are deleted.

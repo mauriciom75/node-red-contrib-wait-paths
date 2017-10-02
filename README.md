@@ -3,10 +3,10 @@
 ![Alt text](example.jpg?raw=true "Optional Title")
 
 Wait parallel branches to continue flow.
-This node wait for any value in all defined variables in the configuration array of variables. It uses the context.flow to store temporary values until all variables are inicialized with values.
+This node wait for any value in all defined variables in the configuration array of variables. It uses an internal array to store temporary values until all variables are inicialized with values.
 the variables must be/are stored under msg.paths["variable_name"].
-When all variables are initialized with a value (through diferent arrived messages) then only one output message is sended, with all configured variables merged under msg.paths, and the temporary context.flow variables are deleted.
-The key to store varibles in context.flow includes the msg._msgid value, to prevent merge of flow instances for example between parallel http request-response execution flow instances.
+When all variables are initialized with a value (through diferent arrived messages) then only one output message is sended, with all configured variables merged under msg.paths, and the temporary variables are deleted.
+The key to store temporary varibles in includes the msg._msgid value, to prevent merge of flow instances for example between parallel http request-response execution flow instances.
 
 Initial properties interface must be improved. warning! Pending validation of json argument in properties.
 

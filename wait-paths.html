@@ -48,5 +48,5 @@
     <p>The first path/variable in the json array is de main path. The imput message with this path is the base message to return when all imput messages arrived.</p>
     <p>You can put an id in msg.paths_correlationId in the input messages to correlate them. By default uses msg._msgid as the correlationId.</p>
     <p>You can set a timeout. if all messages are not arrived in this interval, from the reception of de first message, an error will be trow.</p>
-    <p>You can set a "final timeout". This interval defines when the auxiliary memory for a correlationId is released. This retain is to avoid duplicate trows of timeout errors when a message arrives after timeout.</p>
+    <p>You can set a "final timeout". This interval defines when the auxiliary memory for a correlationId is released. This retain is to avoid duplicate trows of timeout errors when a message arrives after timeout. This finalTimeut interval is grater than timeout.</p>
 </script>

@@ -15,6 +15,9 @@ module.exports = function(RED) {
         else
             this.finalTimeout = Number(config.finalTimeout);
 
+        if ( this.finalTimeout < this.timeout )
+            this.finalTimeout = this.timeout;
+
         var node = this;
 
         node.interval = setInterval( function () {

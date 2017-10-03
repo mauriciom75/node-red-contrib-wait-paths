@@ -3,11 +3,15 @@
 ![Alt text](example.jpg?raw=true "Optional Title")
 
 Wait parallel branches to continue flow.
+It can also be used as a timeout node.
+
 This node wait for any value in all defined variables in the configuration array of variables. Each variable in the array corresponds with an input path.
 The variables in the input messages must be stored under msg.paths["variable_name"].
 When all variables are initialized with a value (through diferent arrived messages) then only one output message is sended, with all configured variables merged under msg.paths. This output message is based on the message that arrives from first variable/path defined in the configuration array.
 The node uses an internal array to store temporary values until all variables are inicialized with values. By default it uses msg._msgid to correlate variables of same flow execution instance, but optionally you can use the field msg.paths_correlationId with another identifier. This identificator serves to prevent merge of flow instances for example between parallel http request-response execution flow instances.
 This node includes a timeout configuration to prevent reserved memory forever if a message never arrives.
+
+Another use case can be as a timeout node, taking advantage of the timeout functionality. An input message arrives and starts an internal "timer" if the second message not arrives in the configured interval, this node throws a timeout error with the first message received. Then you can catch the error and continue with the flow. Keep in mind that the timeout check runs every 5 seconds. So the interval to release the timeout can be up to 5 seconds longer than the configured timeout.
 
 Initial properties interface must be improved. warning! Pending validation of json argument in properties.
 

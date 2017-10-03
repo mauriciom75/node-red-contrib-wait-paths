@@ -43,7 +43,7 @@
 
 <script type="text/x-red" data-help-name="wait-paths">
     <p>Wait for incoming messages from diferent paths to generate only an output message with the declared variables under msg.paths merged. Each variable under msg.path corresponds with an input path, and should be initialized on a different input path</p>
-    <p>The defined variables must respect the form msq.paths["variable_name"] = value </p>
+    <p>The defined variables must respect the form msg.paths["variable_name"] = value </p>
     <p>The variables are declared in field "paths" with a json string array. Ej: ["variable_name","variable_name2","path3","otherPath","etc"]. Warning! the json string is not validating yet.</p>
     <p>The first path/variable in the json array is de main path. The imput message with this path is the base message to return when all imput messages arrived.</p>
     <p>You can put an id in msg.paths_correlationId in the input messages to correlate them. By default uses msg._msgid as the correlationId.</p>

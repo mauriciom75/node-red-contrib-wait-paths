@@ -44,11 +44,11 @@
 </script>
 
 <script type="text/x-red" data-help-name="wait-paths">
-    <p>Wait for incoming messages from diferent paths to generate only an output message with the declared variables under msg.paths merged. Each variable under msg.path corresponds with an input path, and should be initialized on a different input path</p>
-    <p>The defined variables must respect the form msg.paths["variable_name"] = value </p>
-    <p>The variables are declared in field "paths" with a json string array. Ej: ["variable_name","variable_name2","path3","otherPath","etc"]. Warning! the json string is not validating yet.</p>
-    <p>The first path/variable in the json array is de main path. The imput message with this path is the base message to return when all imput messages arrived.</p>
-    <p>You can put an id in msg.paths_correlationId in the input messages to correlate them. By default uses msg._msgid as the correlationId.</p>
-    <p>You can set a timeout. if all messages are not arrived in this interval, from the reception of de first message, an error will be trow.</p>
-    <p>You can set a "final timeout". This interval defines when the auxiliary memory for a correlationId is released. This retain is to avoid duplicate trows of timeout errors when a message arrives after timeout. This finalTimeut interval is grater than timeout.</p>
+    <p>Wait for incoming messages from diferent paths to generate only an output message with the declared variables under <code>msg.paths</code> merged. Each variable under <code>msg.paths</code> corresponds with an input path, and should be initialized on a different input path</p>
+    <p>The defined variables must respect the form <code>msg.paths["variable_name"] = value</code> </p>
+    <p>The variables are declared in configuration field <b>paths</b> with a json string array. Ej: ["variable_name","variable_name2","path3","otherPath","etc"]. Warning! the json string is not validating yet.</p>
+    <p>The first path/variable in the json array configured in field <b>paths</b> is de main path. The imput message with this path is the base message to return when all imput messages arrived.</p>
+    <p>You can put an id in <code>msg.paths_correlationId</code> in the input messages to correlate them. By default uses <code>msg._msgid</code> as the correlationId.</p>
+    <p>You can configure a <b>timeout</b>. if all messages are not arrived in this interval, from the reception of de first message, an error will be trow.</p>
+    <p>You can set a <b>final timeout</b>. This interval defines when the auxiliary memory for a correlationId is released. This retain is to avoid duplicate trows of timeout errors when a message arrives after timeout. This finalTimeut interval is grater than timeout.</p>
 </script>

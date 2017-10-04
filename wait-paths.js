@@ -29,39 +29,20 @@ module.exports = function(RED) {
             var correlationIds = Object.keys(node.pathsContol);
             correlationIds.forEach( function (correlationId) {
 
-                if ( !node.pathsContol[correlationId].timeoutDone )
+                if ( node.pathsContol[correlationId].timeoutDone )
                 {
-                    /*
-                    var wdelete = false;
-                    var keys2 = Object.keys(node.pathsContol[correlationId].paths);
-                    keys2.forEach( function (key2) {
-                        console.log("  verifico " + key2);
-                        if (node.pathsContol[correlationId].paths[key2].time + node.timeout < time)
-                        {
-                            wdelete = true;
-                        }
-                    });
-                    */
-                    //if (wdelete)
-                    if (node.pathsContol[correlationId].time + node.timeout < time)
-                    {
-                        node.error("wait-paths timeout!", node.pathsContol[correlationId].main_msg);
-                        node.pathsContol[correlationId].timeoutDone = true;
-                        //delete node.pathsContol[correlationId];
-                    }
-                }
-                else
                     if ( node.pathsContol[correlationId].time + node.finalTimeout < time )
                     {
                         delete node.pathsContol[correlationId];
                     }
+                }
             });
 
         }, 5000);
 
         node.on('close', function() {
             clearInterval(node.interval);
-    
+            
         });
         
         node.on('input', function(msg) {
@@ -80,15 +61,20 @@ module.exports = function(RED) {
                 // guardo variables que van llegando
                 for (var i = 0; i < pathsLength; i++) {
                     if (msg.paths[paths[i]]) {
-                        if (!node.pathsContol[correlationId]) node.pathsContol[correlationId] = {};
-                        node.pathsContol[correlationId].time = Date.now();
 
-                        /*
-                        node.pathsContol[correlationId].paths = {}; 
+                        if ( !node.pathsContol[correlationId] )
+                        {
+                            node.pathsContol[correlationId] = {};
+                            node.pathsContol[correlationId].time = Date.now();
 
-                        node.pathsContol[correlationId].paths[paths[i]] = { "data": msg.paths[paths[i]],
-                                                                            "time": Date.now() };
-                        */
+                            node.pathsContol[correlationId].timeOut = setTimeout( function () {
+
+                                node.pathsContol[correlationId].timeoutDone = true;
+                                node.error("wait-paths timeout!", node.pathsContol[correlationId].main_msg);
+
+                            }, node.timeout)
+                        }
+
                         // El path principal es el primero de la lista 
                         if ( i == 0 )
                         {
@@ -124,18 +110,17 @@ module.exports = function(RED) {
 
                 // evaluo si ya llegaron todos
                 for (var i = 0; i < pathsLength; i++) {
-                    //console.log( "verifico path :" + paths[i] +"   valor: " +node.pathsContol[correlationId].paths[paths[i]].data )
-                    //if ( !node.pathsContol[correlationId].paths[paths[i]] )
+
                     if ( !node.pathsContol[correlationId].main_msg.paths[paths[i]] )
                         break;
                 }
                 // si llegaron todos devuelvo msg y elimino auxiliares.
                 if ( i == pathsLength )
                 {
+                    clearTimeout(node.pathsContol[correlationId].timeOut);
                     node.send(node.pathsContol[correlationId].main_msg);
                     delete node.pathsContol[correlationId]; //[paths[i]];
-                    //return msg;
-                    //node.send(msg);
+
                 }
             }                
             

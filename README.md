@@ -11,7 +11,7 @@ When all variables are initialized with a value (through diferent arrived messag
 The node uses an internal array to store temporary values until all variables are inicialized with values. By default it uses msg._msgid to correlate variables of same flow execution instance, but optionally you can use the field msg.paths_correlationId with another identifier. This identificator serves to prevent merge of flow instances for example between parallel http request-response execution flow instances.
 This node includes a timeout configuration to prevent reserved memory forever if a message never arrives.
 
-Another use case can be as a timeout node, taking advantage of the timeout functionality. An input message arrives and starts an internal "timer" if the second message not arrives in the configured interval, this node throws a timeout error with the first message received. Then you can catch the error and continue with the flow. Keep in mind that the timeout check runs every 5 seconds. So the interval to release the timeout can be up to 5 seconds longer than the configured timeout.
+Another use case can be as a timeout node, taking advantage of the timeout functionality. An input message arrives and starts a "timer" (setTimeout) if the second message does not arrive in the configured interval, this node throws a timeout error with the first message received. Then you can catch the error and continue with the flow.
 
 Initial properties interface must be improved. warning! Pending validation of json argument in properties.
 

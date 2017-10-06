@@ -1,6 +1,6 @@
 {
     "name" : "node-red-contrib-wait-paths",
-    "version": "0.2.6",
+    "version": "0.2.7",
     "description": "Wait several branches to continue flow. Wait for incoming messages from diferent paths to generate only an output message with the declared variables under msg.path merged.",
     "repository": {
         "type": "git",

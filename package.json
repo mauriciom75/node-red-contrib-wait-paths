@@ -1,7 +1,7 @@
 {
     "name" : "node-red-contrib-wait-paths",
-    "version": "0.2.7",
-    "description": "Wait several branches to continue flow. Wait for incoming messages from diferent paths to generate only an output message with the declared variables under msg.path merged.",
+    "version": "0.2.8",
+    "description": "Wait several branches to continue flow. Wait for incoming messages from diferent paths to generate only an output message.",
     "repository": {
         "type": "git",
         "url": "https://github.com/mauriciom75/node-red-contrib-wait-paths.git"
@@ -18,7 +18,10 @@
             "wait-paths": "wait-paths.js"
         }
     },
-    "author": "Mauricio Margot",
+    "author": {
+        "name": "Mauricio Margot",
+        "email": "mauriciom7575@gmail.com"
+    },
     "license": "MIT",
     "homepage": "https://github.com/mauriciom75/node-red-contrib-wait-paths"
 }

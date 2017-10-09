@@ -13,7 +13,7 @@
         },
         inputs:1,
         outputs:1,
-        icon: "file.png",
+        icon: "node-red-contrib-wait-paths.png",
         label: function() {
             return this.name||"wait-paths";
         }
@@ -30,11 +30,11 @@
         <input type="text" id="node-input-paths" placeholder="Paths">
     </div>
     <div class="form-row">
-        <label for="node-input-timeout"><i class="icon-tag"></i> Timeout</label>
+        <label for="node-input-timeout"><i class="fa fa-clock-o"></i> Timeout</label>
         <input type="text" id="node-input-timeout" placeholder="Timeout">
     </div>        
     <div class="form-row">
-        <label for="node-input-finalTimeout"><i class="icon-tag"></i> finalTimeout</label>
+        <label for="node-input-finalTimeout"><i class="fa fa-clock-o"></i> finalTimeout</label>
         <input type="text" id="node-input-finalTimeout" placeholder="FinalTimeout">        
     </div>
     <div class="form-row node-input-rule-container-row">
@@ -50,5 +50,5 @@
     <p>The first path/variable in the json array configured in field <b>paths</b> is de main path. The imput message with this path is the base message to return when all imput messages arrived.</p>
     <p>You can put an id in <code>msg.paths_correlationId</code> in the input messages to correlate them. By default uses <code>msg._msgid</code> as the correlationId.</p>
     <p>You can configure a <b>timeout</b>. if all messages are not arrived in this interval, from the reception of de first message, an error will be trow.</p>
-    <p>You can set a <b>final timeout</b>. This interval defines when the auxiliary memory for a correlationId is released. This retain is to avoid duplicate trows of timeout errors when a message arrives after timeout. This finalTimeut interval is grater than timeout.</p>
+    <p>You can set a <b>final timeout</b>. This interval defines when the auxiliary memory for a correlationId is released. This retain is to avoid duplicate trows of timeout errors when a message arrives after timeout. This finalTimeut interval is greater than timeout.</p>
 </script>

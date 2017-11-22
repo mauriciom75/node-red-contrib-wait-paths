@@ -60,7 +60,7 @@ module.exports = function(RED) {
                 
                 // guardo variables que van llegando
                 for (var i = 0; i < pathsLength; i++) {
-                    if (msg.paths[paths[i]]) {
+                    if (paths[i] in msg.paths) {
 
                         if ( !node.pathsContol[correlationId] )
                         {

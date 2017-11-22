@@ -99,7 +99,7 @@ module.exports = function(RED) {
                             // si es el primero guardo todo el mensaje.
                             node.pathsContol[correlationId].main_msg = msg;
                         }
-                        if (!node.pathsContol[correlationId].main_msg.paths[paths[i]])
+                        if (! (paths[i] in node.pathsContol[correlationId].main_msg.paths))
                         {
                             // para el resto solo guardo el dato del path.
                             node.pathsContol[correlationId].main_msg.paths[paths[i]] = msg.paths[paths[i]];
@@ -111,7 +111,7 @@ module.exports = function(RED) {
                 // evaluo si ya llegaron todos
                 for (var i = 0; i < pathsLength; i++) {
 
-                    if ( !node.pathsContol[correlationId].main_msg.paths[paths[i]] )
+                    if ( ! (paths[i] in node.pathsContol[correlationId].main_msg.paths) )
                         break;
                 }
                 // si llegaron todos devuelvo msg y elimino auxiliares.

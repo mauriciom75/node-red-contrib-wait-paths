@@ -1,27 +1,93 @@
 {
-    "name" : "node-red-contrib-wait-paths",
-    "version": "0.2.10",
-    "description": "Wait several branches to continue flow. Wait for incoming messages from diferent paths to generate only an output message.",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mauriciom75/node-red-contrib-wait-paths.git"
-    },
-    "keywords": [
-        "node-red",
-        "join",
-        "parallel",
-        "timeout",
-        "merge"
-    ],
-    "node-red" : {
-        "nodes": {
-            "wait-paths": "wait-paths.js"
-        }
-    },
-    "author": {
-        "name": "Mauricio Margot",
-        "email": "mauriciom7575@gmail.com"
-    },
-    "license": "MIT",
-    "homepage": "https://github.com/mauriciom75/node-red-contrib-wait-paths"
+  "_args": [
+    [
+      {
+        "raw": "node-red-contrib-wait-paths",
+        "scope": null,
+        "escapedName": "node-red-contrib-wait-paths",
+        "name": "node-red-contrib-wait-paths",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\Program Files (x86)\\OpenSSH\\.node-red"
+    ]
+  ],
+  "_from": "node-red-contrib-wait-paths@latest",
+  "_id": "node-red-contrib-wait-paths@0.2.10",
+  "_inCache": true,
+  "_location": "/node-red-contrib-wait-paths",
+  "_nodeVersion": "6.9.5",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/node-red-contrib-wait-paths-0.2.10.tgz_1511318045321_0.5691108966711909"
+  },
+  "_npmUser": {
+    "name": "mauriciom75",
+    "email": "mauriciom7575@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "node-red-contrib-wait-paths",
+    "scope": null,
+    "escapedName": "node-red-contrib-wait-paths",
+    "name": "node-red-contrib-wait-paths",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-red-contrib-wait-paths/-/node-red-contrib-wait-paths-0.2.10.tgz",
+  "_shasum": "782ba390baecff5e25aaa4fd1e36503756926da7",
+  "_shrinkwrap": null,
+  "_spec": "node-red-contrib-wait-paths",
+  "_where": "D:\\Program Files (x86)\\OpenSSH\\.node-red",
+  "author": {
+    "name": "Mauricio Margot",
+    "email": "mauriciom7575@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/mauriciom75/node-red-contrib-wait-paths/issues"
+  },
+  "dependencies": {},
+  "description": "Wait several branches to continue flow. Wait for incoming messages from diferent paths to generate only an output message.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "782ba390baecff5e25aaa4fd1e36503756926da7",
+    "tarball": "https://registry.npmjs.org/node-red-contrib-wait-paths/-/node-red-contrib-wait-paths-0.2.10.tgz"
+  },
+  "gitHead": "4e708145354bd35c9c45801b191ec23fe962b7a0",
+  "homepage": "https://github.com/mauriciom75/node-red-contrib-wait-paths",
+  "keywords": [
+    "node-red",
+    "join",
+    "parallel",
+    "timeout",
+    "merge"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "mauriciom75",
+      "email": "mauriciom7575@gmail.com"
+    }
+  ],
+  "name": "node-red-contrib-wait-paths",
+  "node-red": {
+    "nodes": {
+      "wait-paths": "wait-paths.js"
+    }
+  },
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauriciom75/node-red-contrib-wait-paths.git"
+  },
+  "scripts": {},
+  "version": "0.2.11"
 }

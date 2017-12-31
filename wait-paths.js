@@ -47,10 +47,18 @@ module.exports = function(RED) {
         
         node.on('input', function(msg) {
             
+            if ( !msg.paths )
+            {
+                node.error("wait-paths undefined msg.paths! see intructions.", msg);
+                return;
+            }
+
             if (msg.paths_correlationId)
                 var correlationId = msg.paths_correlationId;
             else            
                 var correlationId = msg._msgid.replace(".","0");
+
+            var pathExist = false;
 
             if ( !node.pathsContol[correlationId] || 
                  node.pathsContol[correlationId] && !node.pathsContol[correlationId].timeoutDone ) // si ya dio timeout. No hago nada.
@@ -61,6 +69,8 @@ module.exports = function(RED) {
                 // guardo variables que van llegando
                 for (var i = 0; i < pathsLength; i++) {
                     if (paths[i] in msg.paths) {
+
+                        pathExist = true;
 
                         if ( !node.pathsContol[correlationId] )
                         {
@@ -107,7 +117,12 @@ module.exports = function(RED) {
 
                     }
                 }
-
+                // Si el path no etaba configurado doy error.
+                if ( !pathExist )
+                {
+                    node.error("wait-paths msg.paths[\"path\"] not exists in configuration!", msg);
+                    return;
+                }
                 // evaluo si ya llegaron todos
                 for (var i = 0; i < pathsLength; i++) {
 

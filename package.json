@@ -83,11 +83,10 @@
     }
   },
   "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mauriciom75/node-red-contrib-wait-paths.git"
   },
   "scripts": {},
-  "version": "0.2.11"
+  "version": "0.2.12"
 }

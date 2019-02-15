@@ -2,7 +2,8 @@ module.exports = function(RED) {
     function waitPathsNode(config) {
         RED.nodes.createNode(this,config);
 
-        this.paths = JSON.parse(config.paths);
+        if (config.pathsToWait != "")
+            this.pathsToWait = JSON.parse(config.pathsToWait);
 
         this.pathsContol = [];
         if ( config.timeout == "" )
@@ -47,28 +48,42 @@ module.exports = function(RED) {
         
         node.on('input', function(msg) {
             
-            if ( !msg.paths )
+            if ( !msg.paths || typeof msg.paths != "object")
             {
-                node.error("wait-paths undefined msg.paths! see intructions.", msg);
+                node.error("wait-paths 'msg.paths' undefined or not an object, must be paths['text']=value .", msg);
                 return;
             }
 
-            if (msg.paths_correlationId)
-                var correlationId = msg.paths_correlationId;
-            else            
-                var correlationId = msg._msgid.replace(".","0");
+            if (msg.pathsCorrelationId)
+                var correlationId = msg.pathsCorrelationId;
+            else             
+                if (msg.paths_correlationId) // for compatibility with old name style
+                    var correlationId = msg.paths_correlationId;
+                else             
+                    var correlationId = msg._msgid.replace(".","0");
 
             var pathExist = false;
 
             if ( !node.pathsContol[correlationId] || 
                  node.pathsContol[correlationId] && !node.pathsContol[correlationId].timeoutDone ) // si ya dio timeout. No hago nada.
             {
-                var paths = node.paths;
-                var pathsLength = paths.length;
+                if (msg.pathsToWait)
+                    var pathsToWait = msg.pathsToWait;
+                else
+                    if ( !node.pathsToWait )
+                    {
+                        node.error("wait-paths pathsToWait must be defined.", msg);
+                        return;
+                    }
+                    else
+                        var pathsToWait = node.pathsToWait;
+
+                
+                var pathsLength = pathsToWait.length;
                 
                 // guardo variables que van llegando
                 for (var i = 0; i < pathsLength; i++) {
-                    if (paths[i] in msg.paths) {
+                    if (pathsToWait[i] in msg.paths) {
 
                         pathExist = true;
 
@@ -109,10 +124,10 @@ module.exports = function(RED) {
                             // si es el primero guardo todo el mensaje.
                             node.pathsContol[correlationId].main_msg = msg;
                         }
-                        if (! (paths[i] in node.pathsContol[correlationId].main_msg.paths))
+                        if (! (pathsToWait[i] in node.pathsContol[correlationId].main_msg.paths))
                         {
                             // para el resto solo guardo el dato del path.
-                            node.pathsContol[correlationId].main_msg.paths[paths[i]] = msg.paths[paths[i]];
+                            node.pathsContol[correlationId].main_msg.paths[pathsToWait[i]] = msg.paths[pathsToWait[i]];
                         }
 
                     }
@@ -120,13 +135,13 @@ module.exports = function(RED) {
                 // Si el path no etaba configurado doy error.
                 if ( !pathExist )
                 {
-                    node.error("wait-paths msg.paths[\"path\"] not exists in configuration!", msg);
+                    node.error("wait-paths msg.paths[\"path\"] not exists in pathsToWait!", msg);
                     return;
                 }
                 // evaluo si ya llegaron todos
                 for (var i = 0; i < pathsLength; i++) {
 
-                    if ( ! (paths[i] in node.pathsContol[correlationId].main_msg.paths) )
+                    if ( ! (pathsToWait[i] in node.pathsContol[correlationId].main_msg.paths) )
                         break;
                 }
                 // si llegaron todos devuelvo msg y elimino auxiliares.

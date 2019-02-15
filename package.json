@@ -88,5 +88,5 @@
     "url": "git+https://github.com/mauriciom75/node-red-contrib-wait-paths.git"
   },
   "scripts": {},
-  "version": "0.2.12"
+  "version": "0.3.1"
 }

@@ -2,8 +2,8 @@ module.exports = function(RED) {
     function waitPathsNode(config) {
         RED.nodes.createNode(this,config);
 
-        if (config.pathsToWait != "")
-            this.pathsToWait = JSON.parse(config.pathsToWait);
+        if (config.paths != "")
+            this.pathsToWait = JSON.parse(config.paths);
 
         this.pathsContol = [];
         if ( config.timeout == "" )

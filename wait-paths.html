@@ -7,7 +7,7 @@
         color: '#a6bbcf',
         defaults: {
             name: {value:""},
-            pathsToWait: {value:'["path_1","other_path"]'},
+            paths: {value:'["path_1","other_path"]'},
             timeout: {value:15000, validate:RED.validators.number()},
             finalTimeout: {value:60000, validate:RED.validators.number()}
         },
@@ -26,8 +26,8 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-pathsToWait"><i class="icon-tag"></i> PathsToWait</label>
-        <input type="text" id="node-input-pathsToWait" placeholder='["path_1","other_path"]'>
+        <label for="node-input-paths"><i class="icon-tag"></i> PathsToWait</label>
+        <input type="text" id="node-input-paths" placeholder='["path_1","other_path"]'>
     </div>
     <div class="form-row">
         <label for="node-input-timeout"><i class="fa fa-clock-o"></i> Timeout</label>

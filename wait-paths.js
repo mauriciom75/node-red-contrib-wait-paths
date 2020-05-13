@@ -95,7 +95,7 @@ module.exports = function(RED) {
                             node.pathsContol[correlationId].timeOut = setTimeout( function () {
 
                                 node.pathsContol[correlationId].timeoutDone = true;
-                                node.error("wait-paths timeout!", node.pathsContol[correlationId].main_msg);
+                                node.error(`wait-paths timeout at: ${pathsToWait[i]}`, node.pathsContol[correlationId].main_msg);
 
                             }, node.timeout)
                         }
